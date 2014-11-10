@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=0
-PATCHVER=1
+PATCHVER=2
 SUBLEVEL=-dev
 
 # Variables
@@ -25,5 +25,5 @@ echo "["$TIME" INFO] os.version: "$(uname -r)
 echo "["$TIME" INFO] os.arch: "$(uname -p)
 echo "["$TIME" INFO] system.arch: "$(uname -m)
 sleep 5
-source net/newbieshell/bootstrap/menu.sh	
+source net/newbieshell/bootstrap/Login.sh	
 
