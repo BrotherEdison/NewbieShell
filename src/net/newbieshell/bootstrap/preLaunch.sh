@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=0
-PATCHVER=2
+PATCHVER=3
 SUBLEVEL=-dev
 
 # Variables
@@ -18,12 +18,14 @@ TIME=$(date +%x)
 # No functions for this module
 # Runtime
 
-echo "["$TIME" INFO] Bootstrap (v"$MAJORVER.$MINORVER.$PATCHVER$SUBLEVEL")"
-echo "["$TIME" INFO] Current time is "$DATETIME
-echo "["$TIME" INFO] os.name: "$(uname)
-echo "["$TIME" INFO] os.version: "$(uname -r)
-echo "["$TIME" INFO] os.arch: "$(uname -p)
-echo "["$TIME" INFO] system.arch: "$(uname -m)
+cat <<< _EOF_ 
+[$TIME INFO] Bootstrap (v$MAJORVER.$MINORVER.$PATCHVER$SUBLEVEL)
+[$TIME INFO] Current time is $DATETIME
+[$TIME INFO] os.name: $(uname)
+[$TIME INFO] os.version: $(uname -r)
+[$TIME INFO] os.arch: $(uname -p)
+[$TIME INFO] system.arch: $(uname -m)
+_EOF_
 sleep 5
 source net/newbieshell/bootstrap/Login.sh	
 
