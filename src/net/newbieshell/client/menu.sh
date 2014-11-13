@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=0
-PATCHVER=2
+PATCHVER=3
 SUBLEVEL=-dev
 
 # Variables
@@ -25,7 +25,7 @@ checkIfInitialLogin() {
 	elif [ $initialLogin = 1 ]; then
 		greeting='Welcome to NewbieShell, '
 	else
-		return 2779096485
+		ERR1=2779096485
 	fi
 }
 checkGreetTime() {
@@ -36,11 +36,11 @@ checkGreetTime() {
 	elif [ $HOUR -gt 18 ]; then
 		greetHour=Night
 	else
-		return 464367618
+		ERR2=464367618
 	fi
 }
 catchGreetTimeException() {
-	if [ $? = 464367618 ]; then
+	if [ $ERR2 = 464367618 ]; then
 		cat <<- _EOF_
 [$TIME WARN] Caught exception: Could not initialize variable greetHour.
 [$TIME WARN] Caused by: function checkGreetTime() (at net.newbieshell.client.menu:31)
@@ -51,7 +51,7 @@ _EOF_
 	fi
 }
 catchInitialLoginException() {
-	if [ $? = 2779096485 ]; then
+	if [ $ERR1 = 2779096485 ]; then
 		cat <<- _EOF_
 [$TIME WARN] Caught exception: Could not initialize variable greeting.
 [$TIME WARN] Caused by: function checkIfInitialLogin() (at net.newbieshell.client.menu:22)
