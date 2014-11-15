@@ -5,9 +5,9 @@
 # Version Identification
 
 MAJORVER=0
-MINORVER=0
-PATCHVER=5
-SUBLEVEL=-dev
+MINORVER=1
+PATCHVER=0
+SUBLEVEL=
 
 # No variables for this module
 # No functions for this module

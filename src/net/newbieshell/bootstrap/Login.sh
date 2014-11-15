@@ -5,9 +5,9 @@
 # Version Identification
 
 MAJORVER=0
-MINORVER=0
-PATCHVER=2
-SUBLEVEL=-dev
+MINORVER=1
+PATCHVER=0
+SUBLEVEL=
 
 # Variables
 
