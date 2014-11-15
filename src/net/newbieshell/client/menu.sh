@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=0
-PATCHVER=2
+PATCHVER=3
 SUBLEVEL=-dev
 
 # Variables
@@ -16,6 +16,7 @@ DATE=$(date +%x)
 TIME=$(date +%X)
 HOUR=$(date +%H)
 PATH=$(pwd)
+programList='/etc/nsh/programs'
 
 # Functions
 
@@ -26,8 +27,12 @@ menu() {
 	prompt
 }
 prompt() {
-	read -p $TIME\ $userName": "$PATH"> "
-	# Still a work in progress
+	read -p $TIME\ $userName:\ $PATH\> cmd
+	if cat $programList | grep $cmd ]; then
+		$cmd
+	else
+		echo $cmd": command not found..."
+	fi
 }
 # Runtime
 
