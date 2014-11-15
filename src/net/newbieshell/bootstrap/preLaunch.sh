@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=0
-PATCHVER=3
+PATCHVER=4
 SUBLEVEL=-dev
 
 # Variables
@@ -19,7 +19,7 @@ TIME=$(date +%x)
 # Runtime
 
 cat <<< _EOF_ 
-[$TIME INFO] Bootstrap (v$MAJORVER.$MINORVER.$PATCHVER$SUBLEVEL)
+[$TIME INFO] Bootstrap (vNaN)
 [$TIME INFO] Current time is $DATETIME
 [$TIME INFO] os.name: $(uname)
 [$TIME INFO] os.version: $(uname -r)
@@ -27,5 +27,6 @@ cat <<< _EOF_
 [$TIME INFO] system.arch: $(uname -m)
 _EOF_
 sleep 5
+echo "Bootstrap complete, advancing into stage 1.5 (bootstrap-client)."
 source net/newbieshell/bootstrap/Login.sh	
 
