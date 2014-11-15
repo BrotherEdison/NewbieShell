@@ -5,16 +5,12 @@
 # Version Identification
 
 MAJORVER=0
-MINORVER=0
-PATCHVER=1
-SUBLEVEL=-dev
+MINORVER=1
+PATCHVER=0
+SUBLEVEL=
 
-# Variables
-
-
-
-# Functions
-
-
-
+# No variables for this module
+# No functions for this module
 # Runtime
+
+source net/newbieshell/client/preLaunch.sh
