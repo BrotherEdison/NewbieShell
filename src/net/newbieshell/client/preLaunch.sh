@@ -1,12 +1,12 @@
 #!/bin/bash
-# net.newbieshell.client.menu
+# net.newbieshell.client.preLaunch
 # This source file is part of the NewbieShell project.
 
 # Version Identification
 
 MAJORVER=0
 MINORVER=0
-PATCHVER=3
+PATCHVER=4
 SUBLEVEL=-dev
 
 # Variables
@@ -61,6 +61,10 @@ _EOF_
 		return 0
 	fi
 }
-# Still a work in progress
 
 # Runtime
+
+checkIfInitialLogin
+checkGreetTime
+catchGreetTimeException
+catchInitialLoginException
