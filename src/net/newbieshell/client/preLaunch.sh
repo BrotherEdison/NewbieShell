@@ -6,15 +6,15 @@
 
 MAJORVER=0
 MINORVER=0
-PATCHVER=4
+PATCHVER=5
 SUBLEVEL=-dev
 
 # Variables
 
 initialLogin=0
 DATETIME=$(date +%X\ %x)
-DATE=$(date +%X)
-TIME=$(date +%x)
+DATE=$(date +%x)
+TIME=$(date +%X)
 HOUR=$(date +%H)
 
 # Functions
@@ -46,6 +46,8 @@ catchGreetTimeException() {
 [$TIME WARN] Caused by: function checkGreetTime() (at net.newbieshell.client.menu:31)
 [$TIME WARN] This can be safely ignored, but 24-hour time will not function.
 _EOF_
+catchInitialLoginException
+source net/newbieshell/client/menu.sh
 	else
 		return 0
 	fi
@@ -57,6 +59,7 @@ catchInitialLoginException() {
 [$TIME WARN] Caused by: function checkIfInitialLogin() (at net.newbieshell.client.menu:22)
 [$TIME WARN] This can be safely ignored, but I will use the default greeting.
 _EOF_
+source net/newbieshell/client/menu.sh
 	else
 		return 0
 	fi
@@ -68,3 +71,4 @@ checkIfInitialLogin
 checkGreetTime
 catchGreetTimeException
 catchInitialLoginException
+source net/newbieshell/client/menu.sh
