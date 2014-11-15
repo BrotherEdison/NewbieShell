@@ -6,46 +6,38 @@
 
 MAJORVER=0
 MINORVER=0
-PATCHVER=1
+PATCHVER=2
 SUBLEVEL=-dev
 
 # Variables
 
-configFile='/etc/default/nsh/Login.conf'
-passwdFile='/etc/default/nsh/passwd'
-hashedPass=$(echo $password | sha512sum)
+hashedPassWord=$(echo $passWord | sha512sum)
+passwdFile='/etc/nsh/login/passwd'
 
 # Functions
 
-getCreds() {
+loginMenu() {
 	clear
 	unset $REPLY
 	echo "Welcome to NewbieShell version NaN."
-	echo "List of users:"
-	cat $passwdFile | cut -f 1,2 | head
-	echo "Enter the number between the brackets, or type N if it is not listed."
-	read -N 1
-	if [ $REPLY = N ]; then
-		echo "Not listed? Please enter your username below."
-		read -p "Username: " username
-		if cat $passwdFile | grep $username ; then
-			echo read -s -p "Password: " password
-			if cat $passwdFile | grep $hashedPass; then
-				echo "Logging in..."
-				source net/newbieshell/client/Main.sh
-			else
-				echo "Password incorrect!"
-				getCreds
-			fi
+	echo "Please enter your username:"
+	read userName
+	if cat $passwdFile | cut -f 1 | grep $userName; then
+		echo "Welcome, "$userName"."
+		echo "Please enter your password."
+		read -s passWord
+		if cat $passwdFile | cut -f 2 | grep $hashedPassWord; then
+			echo "Logged in as "$userName"."
+			source net/newbieshell/client/Main.sh
 		else
-			echo "Username incorrect!"
+			echo "Password is not correct!"
+			loginMenu
 		fi
 	else
-		return 16435934 # Still a work in progress
+		echo "Username does not exist!"
 	fi
 }
 
 # Runtime
 
-getCreds
-
+loginMenu
