@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=0
-PATCHVER=3
+PATCHVER=4
 SUBLEVEL=-dev
 
 # Variables
@@ -27,7 +27,7 @@ menu() {
 	prompt
 }
 prompt() {
-	read -p $TIME\ $userName:\ $PATH\> cmd
+	read -p "$username is in $pwd>" cmd
 	if cat $programList | grep $cmd ]; then
 		$cmd
 	else
