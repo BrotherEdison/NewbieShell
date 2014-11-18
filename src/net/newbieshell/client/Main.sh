@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=1
+PATCHVER=2
 SUBLEVEL=
 
 # No variables for this module
