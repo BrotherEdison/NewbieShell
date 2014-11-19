@@ -19,7 +19,7 @@ passwdFile='/etc/nsh/login/passwd'
 loginMenu() {
 	clear
 	unset $REPLY
-	echo "Welcome to NewbieShell version 0.1.1."
+	echo "Welcome to NewbieShell version "$MAJORVER"."$MINORVER"."$PATCHVER"."
 	echo "Please enter your username:"
 	read userName
 	if cat $passwdFile | cut -f 1 | grep $userName; then
