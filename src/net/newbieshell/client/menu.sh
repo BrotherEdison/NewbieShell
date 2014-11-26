@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=3
+PATCHVER=5
 SUBLEVEL=
 
 # Variables
@@ -43,8 +43,23 @@ connect() {
 	read mu_hostname
 	echo "Enter the username for connecting to the Multiuser host. (Leave blank to assume current username)"
 	read mu_username
+	if [ -z $mu_hostname ]; then
+		echo "Error: you have entered a blank hostname."
+		connect
+	fi
 	if [ -z $mu_username ]; then
 		mu_username=$userName
+
+	fi
+	echo "Connecting to the host..."
+	ping -c 3 $mu_hostname
+	if [ $? = 130 ]; then
+		echo "Failed to connect to the server"
+		echo "Unknown host"
+	else
+		source net/newbieshell/server/connect/ssh.sh &
+		pid=$!
+		wait $pid
 	fi
 prompt() {
 	read -p "$username is in $pwd>" cmd
