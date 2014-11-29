@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=5
+PATCHVER=6
 SUBLEVEL=
 
 # Variables
@@ -57,9 +57,12 @@ connect() {
 		echo "Failed to connect to the server"
 		echo "Unknown host"
 	else
+		echo "Parent: Starting connection process."
 		source net/newbieshell/server/connect/ssh.sh &
 		pid=$!
+		echo "Parent: Waiting for connection process to exit..."
 		wait $pid
+		echo "Parent: Connection process terminated."
 	fi
 prompt() {
 	read -p "$username is in $pwd>" cmd
