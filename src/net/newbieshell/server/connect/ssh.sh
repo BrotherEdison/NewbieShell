@@ -5,6 +5,30 @@
 # Version Identification
 
 MAJORVER=0
-MINORVER=0
-PATCHVER=1
+MINORVER=1
+PATCHVER=6
 SUBLEVEL=
+
+# Variables
+
+defaultConnectionPort=30676
+trunc_hostname=$(echo $mu_hostname | cut -d : -f 1)
+
+# Functions
+findConnectionPort() {
+	if [ -z $(echo $mu_hostname | cut -d : -f 2) ]; then
+		trunc_connectionPort=$defaultConnectionPort
+	else
+		trunc_connectionPort=$(echo $mu_hostname | cut -d : -f 2)
+	fi
+}
+remote_connect() {
+	echo "Child: Opening remote connection for "$mu_username" to "$trunc_hostname":"$trunc_connectionPort"..."
+	ssh -p $trunc_connectionPort $mu_username@$trunc_username
+	exit
+}
+
+# Runtime
+
+findConnectionPort
+remote_connect
