@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=6
+PATCHVER=7
 SUBLEVEL=
 
 # Variables
@@ -25,6 +25,7 @@ findConnectionPort() {
 remote_connect() {
 	echo "Child: Opening remote connection for "$mu_username" to "$trunc_hostname":"$trunc_connectionPort"..."
 	ssh -p $trunc_connectionPort $mu_username@$trunc_username
+	echo "Child: Remote connection closed. Exiting."
 	exit
 }
 
