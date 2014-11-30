@@ -54,7 +54,7 @@ connect() {
 	echo "Connecting to the host..."
 	ping -c 3 $mu_hostname
 	if [ $? = 130 ]; then
-		echo "Failed to connect to the server"
+		echo "Failed to connect to the host"
 		echo "Unknown host"
 	else
 		echo "Parent: Starting connection process."
@@ -63,6 +63,7 @@ connect() {
 		echo "Parent: Waiting for connection process to exit..."
 		wait $pid
 		echo "Parent: Connection process terminated."
+		exit
 	fi
 prompt() {
 	read -p "$username is in $pwd>" cmd
