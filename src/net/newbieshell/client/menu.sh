@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=8
+PATCHVER=9
 SUBLEVEL=
 
 # Variables
@@ -47,6 +47,11 @@ menu() {
 
 su_menu() {
 	echo "Parent: Starting integrated host..."
+	if [ $INITTYPE = systemd ]; then
+		systemctl start sshd.service
+	elif [ $INITTYPE = unsupported ]; then
+		echo "Init type not supported. Please use a systemd distro."
+	fi
 	echo "Parent: Integrated host started on 127.0.0.1:30676..."
 	echo "Parent: Spawning connection process..."
 	mu_hostname=127.0.0.1
