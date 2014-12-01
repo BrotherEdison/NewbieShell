@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=7
+PATCHVER=8
 SUBLEVEL=
 
 # Variables
@@ -69,7 +69,7 @@ mu_menu() {
 	fi
 	echo "Connecting to the host..."
 	ping -c 3 $mu_hostname
-	if [ $? = 130 ]; then
+	if [ $? = 2 ]; then
 		echo "Failed to connect to the host"
 		echo "Unknown host"
 	else
