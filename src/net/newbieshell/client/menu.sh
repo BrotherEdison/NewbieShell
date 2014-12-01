@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=9
+PATCHVER=10
 SUBLEVEL=
 
 # Variables
@@ -50,7 +50,7 @@ su_menu() {
 	if [ $INITTYPE = systemd ]; then
 		systemctl start sshd.service
 	elif [ $INITTYPE = unsupported ]; then
-		echo "Init type not supported. Please use a systemd distro."
+		echo "Init type not supported. Please use a Linux distribution with systemd."
 	fi
 	echo "Parent: Integrated host started on 127.0.0.1:30676..."
 	echo "Parent: Spawning connection process..."
@@ -59,7 +59,7 @@ su_menu() {
 	exit
 }
 mu_menu() {
-		echo "NewbieShell Multiuser is currently very buggy. Report any known bugs to <https://github.com/BrotherEdison/NewbieShell/issues> so we can squash them."
+	echo "NewbieShell Multiuser is currently very buggy. Report any known bugs to <https://github.com/BrotherEdison/NewbieShell/issues> so we can squash them."
 	echo "Enter the IP, hostname, or web address of the Multiuser host."
 	read mu_hostname
 	echo "Enter the username for connecting to the Multiuser host. (Leave blank to assume current username)"
@@ -73,7 +73,7 @@ mu_menu() {
 
 	fi
 	echo "Connecting to the host..."
-	ping -c 3 $mu_hostname
+	ping -c 3 $mu_hostname > /dev/null
 	if [ $? = 2 ]; then
 		echo "Failed to connect to the host"
 		echo "Unknown host"
