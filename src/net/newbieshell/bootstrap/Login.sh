@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=3
+PATCHVER=4
 SUBLEVEL=
 
 # Variables
@@ -22,11 +22,11 @@ loginMenu() {
 	echo "Welcome to NewbieShell version "$MAJORVER"."$MINORVER"."$PATCHVER"."
 	echo "Please enter your username:"
 	read userName
-	if cat $passwdFile | cut -f 1 | grep $userName; then
+	if cat $passwdFile | cut -d : -f 1 | grep $userName; then
 		echo "Welcome, "$userName"."
 		echo "Please enter your password."
 		read -s passWord
-		if cat $passwdFile | cut -f 2 | grep $hashedPassWord; then
+		if cat $passwdFile | cut -d : -f 3 | grep $hashedPassWord; then
 			echo "Logged in as "$userName"."
 			source net/newbieshell/client/Main.sh
 		else
