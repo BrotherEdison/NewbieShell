@@ -101,3 +101,12 @@ usermgr_create() {
     usermgr_create
   fi
 }
+usermgr_delete() {
+  return 0
+}
+usermgr_modify() {
+  return 0
+}
+usermgr_lookup() {
+  return 0
+}
