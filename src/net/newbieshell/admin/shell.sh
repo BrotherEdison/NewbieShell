@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=11
+PATCHVER=12
 SUBLEVEL=
 
 # Variables
@@ -87,6 +87,10 @@ usermgr_create() {
     passWord=$usermgr_create_password
     usermgr_create_fullstring="$usermgr_create_username:$usermgr_create_fullname:$hashedPassWord"
     echo $usermgr_create_fullstring >> $passwdFile
+    unset usermgr_create_fullname
+    unset usermgr_create_password
+    unset usermgr_create_username
+    unset usermgr_create_fullstring
     usermgr
   elif [ $yn = n ]; then
     unset usermgr_create_fullname
