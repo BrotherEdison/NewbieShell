@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=13
+PATCHVER=15
 SUBLEVEL=
 
 # Variables
@@ -108,5 +108,14 @@ usermgr_modify() {
   return 0
 }
 usermgr_lookup() {
-  return 0
+  read -p "Search: " search_terms
+  grep "$search_terms" < "$passwdFile" > /dev/null
+  if [ $? = 1 ]; then
+    echo "No users matched query."
+    usermgr_lookup
+  else
+    echo "$(grep "$search_terms" < "$passwdFile" | wc -l) users matched query."
+    grep "$search_terms" < "$passwdFile" | less
+    usermgr_lookup
+  fi
 }
