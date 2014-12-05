@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=12
+PATCHVER=13
 SUBLEVEL=
 
 # Variables
@@ -36,13 +36,10 @@ adsh() {
   if [ $command = help ]; then
     echo "Utilities available:"
     echo "1. usermgr"
-    echo "2. filemgr"
     echo "Type help <util-number> for more specific help."
     adsh
   elif [ $command = usermgr ]; then
     usermgr
-  elif [ $command = filemgr ]; then
-    filemgr
   else
     echo "adsh: $command: command not found"
     return 1
@@ -103,3 +100,4 @@ usermgr_create() {
     unset usermgr_create_username
     usermgr_create
   fi
+}
