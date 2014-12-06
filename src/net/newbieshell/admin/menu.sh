@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=10
+PATCHVER=11
 SUBLEVEL=
 
 # No variables for this module
@@ -20,7 +20,7 @@ greetMenu() {
   if [ $REPLY = I ]; then
     source net/newbieshell/admin/interactive.sh
   elif [ $REPLY = S ]; then
-    source net/newbieshell/admin/shell/chrootMgr.sh
+    source net/newbieshell/admin/shell/shell.sh
   else
     greetMenu
   fi
