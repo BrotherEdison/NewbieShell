@@ -135,3 +135,7 @@ usermgr_lookup() {
     usermgr_lookup
   fi
 }
+
+# Runtime
+
+infoBox1
