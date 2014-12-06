@@ -121,6 +121,7 @@ usermgr_delete() {
     else
       usermgr_delete
     fi
+  fi
 }
 usermgr_lookup() {
   read -p "Search: " search_terms
