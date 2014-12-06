@@ -5,8 +5,8 @@
 # Version Identification
 
 MAJORVER=0
-MINORVER=1
-PATCHVER=13
+MINORVER=2
+PATCHVER=0
 SUBLEVEL=
 
 # No variables for this module
