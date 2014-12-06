@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=16
+PATCHVER=17
 SUBLEVEL=
 
 # Variables
@@ -99,7 +99,6 @@ usermgr_create() {
   fi
 }
 usermgr_delete() {
-  # WARNING! EXPERIMENTAL!!!
   echo "Removing a user."
   read -p usermgr_delete_username
   grep "$search_terms" < "$passwdFile" > /dev/null
@@ -117,7 +116,8 @@ usermgr_delete() {
       echo "Please enter 'yes' or 'no'!"
       usermgr_delete
     elif [ "$yesno" = yes ] || [ "$yesno" = Yes ] || [ "$yesno" = yEs ] || [ "$yesno" = yeS ] || [ "$yesno" = YEs ] || [ "$yesno" = yES ] || [ "$yesno" = YeS ] || [ "$yesno" = YES ]; then
-      sed -e "s/$(grep "$search_terms" < "$passwdFile")/'')" $passwdFile
+      removed_user_string=$(grep "$search_terms" < "$passwdFile")
+      sed -i "s/$removed_user_string/removed_user_$RANDOM/" $passwdFile
     else
       usermgr_delete
     fi
