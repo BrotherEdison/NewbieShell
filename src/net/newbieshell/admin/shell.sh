@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=15
+PATCHVER=16
 SUBLEVEL=
 
 # Variables
@@ -53,7 +53,6 @@ usermgr() {
   echo "List of commands:"
   echo "[C]reate a new user"
   echo "[D]elete an existing user"
-  echo "[M]odify an existing user"
   echo "[L]ookup user(s)"
   echo "[E]xit"
   read -N 1
@@ -61,8 +60,6 @@ usermgr() {
     usermgr_create
   elif [ $REPLY = D ]; then
     usermgr_delete
-  elif [ $REPLY = M ]; then
-    usermgr_modify
   elif [ $REPLY = L ]; then
     usermgr_lookup
   elif [ $REPLY = E ]; then
@@ -102,10 +99,28 @@ usermgr_create() {
   fi
 }
 usermgr_delete() {
-  return 0
-}
-usermgr_modify() {
-  return 0
+  # WARNING! EXPERIMENTAL!!!
+  echo "Removing a user."
+  read -p usermgr_delete_username
+  grep "$search_terms" < "$passwdFile" > /dev/null
+  if [ $? = 1 ]; then
+    echo "No users matched query."
+    usermgr_delete
+  elif [ $(grep "$search_terms" < "$passwdFile" | wc -l) -gt 1 ]; then
+    echo "Ambiguous query; please enter an unanbiguous query."
+    usermgr_delete
+  else
+    echo "Deleting user $(grep "$search_terms" < "$passwdFile")."
+    echo "All user data will be LOST! Are you sure? [yes/no]"
+    read yesno
+    if [ "$yesno" = y ] || [ "$yesno" = n ] || [ "$yesno" = Y ] || [ "$yesno" = N ]; then
+      echo "Please enter 'yes' or 'no'!"
+      usermgr_delete
+    elif [ "$yesno" = yes ] || [ "$yesno" = Yes ] || [ "$yesno" = yEs ] || [ "$yesno" = yeS ] || [ "$yesno" = YEs ] || [ "$yesno" = yES ] || [ "$yesno" = YeS ] || [ "$yesno" = YES ]; then
+      sed -e "s/$(grep "$search_terms" < "$passwdFile")/'')" $passwdFile
+    else
+      usermgr_delete
+    fi
 }
 usermgr_lookup() {
   read -p "Search: " search_terms
