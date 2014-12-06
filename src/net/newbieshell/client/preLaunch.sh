@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=1
-PATCHVER=3
+PATCHVER=4
 SUBLEVEL=
 
 # Variables
@@ -61,4 +61,4 @@ checkIfInitialLogin
 checkGreetTime
 catchGreetTimeException
 catchInitialLoginException
-source net/newbieshell/client/menu.sh
+source net/newbieshell/client/daemontype.sh
