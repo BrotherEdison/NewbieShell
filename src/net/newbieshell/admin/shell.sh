@@ -31,8 +31,14 @@ adsh() {
   else
     adshPWD=$PWD
   fi
+  adsh_read_command
+}
+adsh_read_command() {
   unset command
-  read -p "$adshPWD #" command
+  read -p "$adshPWD # " command
+  adsh_parse_command
+}
+adsh_parse_command() {
   if [ $command = help ]; then
     echo "Utilities available:"
     echo "1. usermgr"
@@ -43,7 +49,7 @@ adsh() {
   else
     echo "adsh: $command: command not found"
     return 1
-    adsh
+    adsh_read_command
   fi
 }
 usermgr() {
@@ -71,9 +77,9 @@ usermgr() {
 }
 usermgr_create() {
   echo "Creating a new user."
-  read -p "Username:" usermgr_create_username
-  read -p "Full Name:" usermgr_create_fullname
-  read -sp "Password:" usermgr_create_password
+  read -p "Username: " usermgr_create_username
+  read -p "Full Name: " usermgr_create_fullname
+  read -sp "Password: " usermgr_create_password
   echo "I will create a new user with the username $usermgr_create_username, the full name $usermgr_create_fullname, with a password of $usermgr_create_password."
   echo "Is the afromentioned information correct?"
   read -N 1 yn
