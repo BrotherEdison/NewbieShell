@@ -9,7 +9,7 @@ version: "0.2.2"
 authors: "BrotherEdison"
 website: "https://github.com/BrotherEdison/NewbieShell"
 softdepend: ""
-harddepend: "bossint"
+harddepend: ""
 
 exitstatus:
   0:
