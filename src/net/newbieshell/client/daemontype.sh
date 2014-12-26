@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=2
-PATCHVER=1
+PATCHVER=2
 SUBLEVEL=
 
 # No variables for this module
@@ -15,7 +15,11 @@ SUBLEVEL=
 # Runtime
 if [ -f /usr/bin/systemctl ]; then
 	INITTYPE=systemd
+elif [ -f /usr/sbin/update-rc.d ]; then
+    INITTYPE=sysv-deb
+elif [ -f /usr/sbin/chkconfig ]; then
+    INITTYPE=sysv-rh
 else
-	INITTYPE=unsupported
+    INITTYPE=unknown
 fi
 source net/newbieshell/client/menu.sh
