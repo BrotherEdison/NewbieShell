@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=2
-PATCHVER=1
+PATCHVER=2
 SUBLEVEL=
 
 # Variables
@@ -16,7 +16,7 @@ passwdFile='/etc/nsh/login/passwd'
 
 # Functions
 infoBox1() {
-  echo "You are about to enter an administration session. The shell available to you will be adsh, an adminstration shell written for NewbieShell. The text editor available to you is nano. To get a list of utilities that are available, type help. To end this session and return to the menu, type exit."
+  echo "You are about to enter an administration session. The shell available to you will be adsh, an adminstration shell written for NewbieShell. The text editor available to you is textedit. To get a list of utilities that are available, type help. To end this session and return to the menu, type exit."
   echo "Press a key to continue."
   read -N 1
   unset REPLY
@@ -42,10 +42,13 @@ adsh_parse_command() {
   if [ $command = help ]; then
     echo "Utilities available:"
     echo "1. usermgr"
+    echo "2. textedit"
     echo "Type help <util-number> for more specific help."
     adsh
   elif [ $command = usermgr ]; then
     usermgr
+  elif [ $command = textedit ]; then
+    textedit
   else
     echo "adsh: $command: command not found"
     return 1
@@ -55,7 +58,7 @@ adsh_parse_command() {
 usermgr() {
   clear
   unset REPLY
-  echo "User Manager"
+  echo "User Manager version $MAJORVER.$MINORVER.$PATCHVER"
   echo "List of commands:"
   echo "[C]reate a new user"
   echo "[D]elete an existing user"
@@ -139,6 +142,26 @@ usermgr_lookup() {
     echo "$(grep "$search_terms" < "$passwdFile" | wc -l) users matched query."
     grep "$search_terms" < "$passwdFile" | less
     usermgr_lookup
+  fi
+}
+
+textedit() {
+  echo "TextEdit version $MAJORVER.$MINORVER.$PATCHVER"
+  echo "Implementing API version $(nano --version | cut -c 19-23 | grep [1-9].[1-9].[1-9])"
+  echo "List of commands:"
+  echo "Create a [N]ew file"
+  echo "[O]pen an existing file"
+  echo "[E]xit"
+  read -N 1
+  if [ $REPLY = N ]; then
+    textedit_create
+  elif [ $REPLY = O ]; then
+    textedit_open
+  elif [ $REPLY = E ]; then
+    adsh
+  else
+    return 1
+    textedit
   fi
 }
 
