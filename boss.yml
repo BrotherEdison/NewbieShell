@@ -8,11 +8,18 @@ main: "net.newbieshell.bootstrap.Main"
 version: "0.2.2"
 authors: "BrotherEdison"
 website: "https://github.com/BrotherEdison/NewbieShell"
-softdepend: ""
-harddepend: ""
-
-exitstatus:
-  0:
-    command: "info The program terminated successfully."
-  1:
-    command: "error The program terminated with 1 or more errors."
+dependencies:
+  depends:
+  "nano"
+  "coreutils"
+  "OpenSSH-Client"
+  "OpenSSH-Server"
+  "sysv-rc | systemd"
+  recommends:
+  ""
+  suggests:
+  ""
+  conflicts:
+  ""
+  replaces:
+  ""
