@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=2
-PATCHVER=3
+PATCHVER=4
 SUBLEVEL=
 
 # Variables
@@ -147,7 +147,7 @@ usermgr_lookup() {
 
 textedit() {
   echo "TextEdit version $MAJORVER.$MINORVER.$PATCHVER"
-  echo "Implementing API version $(nano --version | cut -c 19-23 | grep [1-9].[1-9].[1-9])"
+  echo "Implementing API version $(nano --version | cut -c 19-23 | grep [0-9].[0-9].[0-9])"
   echo "List of commands:"
   echo "Create a [N]ew file"
   echo "[O]pen an existing file"
