@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # net.newbieshell.client.Main
 # This source file is part of the NewbieShell project.
 

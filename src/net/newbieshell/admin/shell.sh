@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # net.newbieshell.admin.shell
 # This source file is part of the NewbieShell project.
 
