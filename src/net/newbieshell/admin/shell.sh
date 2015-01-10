@@ -6,7 +6,7 @@
 
 MAJORVER=0
 MINORVER=2
-PATCHVER=2
+PATCHVER=3
 SUBLEVEL=
 
 # Variables
@@ -161,6 +161,44 @@ textedit() {
     adsh
   else
     return 1
+    textedit
+  fi
+}
+textedit_create() {
+  echo "Creating a new file."
+  echo "Please enter a file name:"
+  read filename
+  echo "Please enter the path where this file will be placed:"
+  read filepath
+  if stat $filepath/$filename; then
+    echo "Error: cannot create: the file already exists!"
+    textedit_create
+  elif [ ! -w $filepath ]; then
+    echo "Error: cannot stat: you do not have write access to the directory!"
+    textedit_create
+  else
+    touch $filepath/$filename
+    nano $filepath/$filename
+    textedit
+  fi
+}
+textedit_open() {
+  echo "Opening an existing file."
+  echo "Please enter the file name:"
+  read filename
+  echo "Please enter the path:"
+  read filepath
+  if ! stat $filepath/$filename; then
+    echo "Error: cannot stat: the file does not exist!"
+    textedit_open
+  elif [ ! -w $filepath/$filename ]; then
+    echo "Error: cannot stat: you do not have write access to the file!"
+    textedit_open
+  elif [ ! -w $filepath ]; then
+    echo "Error: cannot stat: you do not have write access to the directory!"
+    textedit_open
+  else
+    nano $filepath/$filename
     textedit
   fi
 }
