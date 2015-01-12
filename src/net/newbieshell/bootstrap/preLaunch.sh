@@ -16,23 +16,23 @@ SIGHUP() {
   echo "Caught HangUp (SIGHUP)"
   echo "Cleaning up..."
   if [ $INITTYPE = systemd ]; then
-    if systemctl status sshd; then
+    if sudo systemctl status sshd; then
       echo "sshd is running. Terminating..."
-      systemctl stop sshd
+      sudo systemctl stop sshd
     else
       echo "sshd was not running."
     fi
   elif [ $INITTYPE = sysv-deb ]; then
-    if service ssh status; then
+    if sudo service ssh status; then
       echo "ssh is running. Terminating..."
-      service ssh stop
+      sudo service ssh stop
     else
       echo "ssh was not running."
     fi
   elif [ $INITTYPE = sysv-rh ]; then
-    if service sshd status; then
+    if sudo service sshd status; then
       echo "sshd is running. Terminating..."
-      service sshd stop
+      sudo service sshd stop
     else
       echo "sshd was not running."
     fi
@@ -45,23 +45,23 @@ SIGINT() {
   echo "Caught Interrupt (SIGINT)"
   echo "Cleaning up..."
   if [ $INITTYPE = systemd ]; then
-    if systemctl status sshd; then
+    if sudo systemctl status sshd; then
       echo "sshd is running. Terminating..."
-      systemctl stop sshd
+      sudo systemctl stop sshd
     else
       echo "sshd was not running."
     fi
   elif [ $INITTYPE = sysv-deb ]; then
-    if service ssh status; then
+    if sudo service ssh status; then
       echo "ssh is running. Terminating..."
-      service ssh stop
+      sudo service ssh stop
     else
       echo "ssh was not running."
     fi
   elif [ $INITTYPE = sysv-rh ]; then
-    if service sshd status; then
+    if sudo service sshd status; then
       echo "sshd is running. Terminating..."
-      service sshd stop
+      sudo service sshd stop
     else
       echo "sshd was not running."
     fi
@@ -73,23 +73,23 @@ SIGQUIT() {
   echo "Caught Quit (SIGQUIT)"
   echo "Cleaning up..."
   if [ $INITTYPE = systemd ]; then
-    if systemctl status sshd; then
+    if sudo systemctl status sshd; then
       echo "sshd is running. Terminating..."
-      systemctl stop sshd
+      sudo systemctl stop sshd
     else
       echo "sshd was not running."
     fi
   elif [ $INITTYPE = sysv-deb ]; then
-    if service ssh status; then
+    if sudo service ssh status; then
       echo "ssh is running. Terminating..."
-      service ssh stop
+      sudo service ssh stop
     else
       echo "ssh was not running."
     fi
   elif [ $INITTYPE = sysv-rh ]; then
-    if service sshd status; then
+    if sudo service sshd status; then
       echo "sshd is running. Terminating..."
-      service sshd stop
+      sudo service sshd stop
     else
       echo "sshd was not running."
     fi
@@ -101,23 +101,23 @@ SIGILL() {
   echo "Caught IllegalAction (SIGILL)"
   echo "Cleaning up..."
   if [ $INITTYPE = systemd ]; then
-    if systemctl status sshd; then
+    if sudo systemctl status sshd; then
       echo "sshd is running. Terminating..."
-      systemctl stop sshd
+      sudo systemctl stop sshd
     else
       echo "sshd was not running."
     fi
   elif [ $INITTYPE = sysv-deb ]; then
-    if service ssh status; then
+    if sudo service ssh status; then
       echo "ssh is running. Terminating..."
-      service ssh stop
+      sudo service ssh stop
     else
       echo "ssh was not running."
     fi
   elif [ $INITTYPE = sysv-rh ]; then
-    if service sshd status; then
+    if sudo service sshd status; then
       echo "sshd is running. Terminating..."
-      service sshd stop
+      sudo service sshd stop
     else
       echo "sshd was not running."
     fi
@@ -129,23 +129,23 @@ SIGABRT() {
   echo "Caught Abort (SIGABRT)"
   echo "Cleaning up..."
   if [ $INITTYPE = systemd ]; then
-    if systemctl status sshd; then
+    if sudo systemctl status sshd; then
       echo "sshd is running. Terminating..."
-      systemctl stop sshd
+      sudo systemctl stop sshd
     else
       echo "sshd was not running."
     fi
   elif [ $INITTYPE = sysv-deb ]; then
-    if service ssh status; then
+    if sudo service ssh status; then
       echo "ssh is running. Terminating..."
-      service ssh stop
+      sudo service ssh stop
     else
       echo "ssh was not running."
     fi
   elif [ $INITTYPE = sysv-rh ]; then
-    if service sshd status; then
+    if sudo service sshd status; then
       echo "sshd is running. Terminating..."
-      service sshd stop
+      sudo service sshd stop
     else
       echo "sshd was not running."
     fi
@@ -157,23 +157,23 @@ SIGBUS() {
   echo "Caught BusErr (SIGBUS)"
   echo "Cleaning up..."
   if [ $INITTYPE = systemd ]; then
-    if systemctl status sshd; then
+    if sudo systemctl status sshd; then
       echo "sshd is running. Terminating..."
-      systemctl stop sshd
+      sudo systemctl stop sshd
     else
       echo "sshd was not running."
     fi
   elif [ $INITTYPE = sysv-deb ]; then
-    if service ssh status; then
+    if sudo service ssh status; then
       echo "ssh is running. Terminating..."
-      service ssh stop
+      sudo service ssh stop
     else
       echo "ssh was not running."
     fi
   elif [ $INITTYPE = sysv-rh ]; then
-    if service sshd status; then
+    if sudo service sshd status; then
       echo "sshd is running. Terminating..."
-      service sshd stop
+      sudo service sshd stop
     else
       echo "sshd was not running."
     fi
@@ -185,23 +185,23 @@ SIGFPE() {
   echo "Caught DivByZero (SIGFPE)"
   echo "Cleaning up..."
   if [ $INITTYPE = systemd ]; then
-    if systemctl status sshd; then
+    if sudo systemctl status sshd; then
       echo "sshd is running. Terminating..."
-      systemctl stop sshd
+      sudo systemctl stop sshd
     else
       echo "sshd was not running."
     fi
   elif [ $INITTYPE = sysv-deb ]; then
-    if service ssh status; then
+    if sudo service ssh status; then
       echo "ssh is running. Terminating..."
-      service ssh stop
+      sudo service ssh stop
     else
       echo "ssh was not running."
     fi
   elif [ $INITTYPE = sysv-rh ]; then
-    if service sshd status; then
+    if sudo service sshd status; then
       echo "sshd is running. Terminating..."
-      service sshd stop
+      sudo service sshd stop
     else
       echo "sshd was not running."
     fi
@@ -213,23 +213,23 @@ SIGSEGV() {
   echo "Caught SegViolation (SIGSEGV)"
   echo "Cleaning up..."
   if [ $INITTYPE = systemd ]; then
-    if systemctl status sshd; then
+    if sudo systemctl status sshd; then
       echo "sshd is running. Terminating..."
-      systemctl stop sshd
+      sudo systemctl stop sshd
     else
       echo "sshd was not running."
     fi
   elif [ $INITTYPE = sysv-deb ]; then
-    if service ssh status; then
+    if sudo service ssh status; then
       echo "ssh is running. Terminating..."
-      service ssh stop
+      sudo service ssh stop
     else
       echo "ssh was not running."
     fi
   elif [ $INITTYPE = sysv-rh ]; then
-    if service sshd status; then
+    if sudo service sshd status; then
       echo "sshd is running. Terminating..."
-      service sshd stop
+      sudo service sshd stop
     else
       echo "sshd was not running."
     fi
@@ -241,23 +241,23 @@ SIGPIPE() {
   echo "Caught BlockedPipe (SIGPIPE)"
   echo "Cleaning up..."
   if [ $INITTYPE = systemd ]; then
-    if systemctl status sshd; then
+    if sudo systemctl status sshd; then
       echo "sshd is running. Terminating..."
-      systemctl stop sshd
+      sudo systemctl stop sshd
     else
       echo "sshd was not running."
     fi
   elif [ $INITTYPE = sysv-deb ]; then
-    if service ssh status; then
+    if sudo service ssh status; then
       echo "ssh is running. Terminating..."
-      service ssh stop
+      sudo service ssh stop
     else
       echo "ssh was not running."
     fi
   elif [ $INITTYPE = sysv-rh ]; then
-    if service sshd status; then
+    if sudo service sshd status; then
       echo "sshd is running. Terminating..."
-      service sshd stop
+      sudo service sshd stop
     else
       echo "sshd was not running."
     fi
@@ -273,23 +273,23 @@ SIGTERM() {
   echo "Caught Terminate (SIGTERM)"
   echo "Cleaning up..."
   if [ $INITTYPE = systemd ]; then
-    if systemctl status sshd; then
+    if sudo systemctl status sshd; then
       echo "sshd is running. Terminating..."
-      systemctl stop sshd
+      sudo systemctl stop sshd
     else
       echo "sshd was not running."
     fi
   elif [ $INITTYPE = sysv-deb ]; then
-    if service ssh status; then
+    if sudo service ssh status; then
       echo "ssh is running. Terminating..."
-      service ssh stop
+      sudo service ssh stop
     else
       echo "ssh was not running."
     fi
   elif [ $INITTYPE = sysv-rh ]; then
-    if service sshd status; then
+    if sudo service sshd status; then
       echo "sshd is running. Terminating..."
-      service sshd stop
+      sudo service sshd stop
     else
       echo "sshd was not running."
     fi
@@ -305,4 +305,3 @@ SIGTSTP() {
 # Runtime
 
 source net/newbieshell/bootstrap/Login.sh
-
