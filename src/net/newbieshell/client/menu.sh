@@ -48,11 +48,11 @@ menu() {
 su_menu() {
 	echo "Parent: Starting integrated host..."
 	if [ $INITTYPE = systemd ]; then
-		systemctl start sshd.service
+		sudo systemctl start sshd.service
     elif [ $INITTYPE = sysv-deb ]; then
-        service start ssh
+        sudo service start ssh
     elif [ $INITTYPE = sysv-rh ]; then
-        service start sshd
+        sudo service start sshd
 	elif [ $INITTYPE = unknown ]; then
 		echo "The init type could not be detected. Please use a distribution with SysV, Upstart, or systemd."
         exit 1
