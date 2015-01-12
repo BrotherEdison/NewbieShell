@@ -28,11 +28,11 @@ remote_connect() {
 	echo "Child: Remote connection closed. Finishing up..."
     if [ $mu_hostname = 127.0.0.1 ]; then
         if [ $INITTYPE = systemd ]; then
-            systemctl stop sshd.service
+            sudo systemctl stop sshd.service
         elif [ $INITTYPE = sysv-deb ]; then
-            service stop ssh
+            sudo service stop ssh
         elif [ $INITTYPE = sysv-rh ]; then
-            service start sshd
+            sudo service start sshd
         fi
     else
         exit
