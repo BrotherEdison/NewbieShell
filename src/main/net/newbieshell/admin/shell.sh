@@ -12,7 +12,7 @@ SUBLEVEL=
 # Variables
 
 hashedPassWord=$(echo $passWord | sha512sum | cut -f 1)
-passwdFile='/etc/nsh/login/passwd'
+passwdFile='/etc/NewbieShell/passwd'
 
 # Functions
 infoBox1() {
@@ -27,7 +27,7 @@ adsh() {
   if [ $PWD = /etc/nsh ]; then
     adshPWD=~
   elif echo $PWD | cut -c 9 | grep /; then
-    adshPWD=~/$(echo $PWD | cut -c 9-) 
+    adshPWD=~/$(echo $PWD | cut -c 9-)
   else
     adshPWD=$PWD
   fi
