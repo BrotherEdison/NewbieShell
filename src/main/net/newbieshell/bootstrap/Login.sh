@@ -12,7 +12,7 @@ SUBLEVEL=
 # Variables
 
 hashedPassWord=$(echo $passWord | sha512sum)
-passwdFile='/etc/nsh/login/passwd'
+passwdFile='/etc/NewbieShell/passwd'
 
 # Functions
 
